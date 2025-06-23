@@ -8,18 +8,21 @@ let guests = [];
 
 function createGuestItem(guest, index) {
   const li = document.createElement("li");
-
   li.className = `guest-item ${guest.category.toLowerCase()}`;
-
-  // Toggle RSVP
+  
+  // Create name span
+  const nameSpan = document.createElement("span");
+  nameSpan.textContent = `${guest.name} (${guest.category}) - ${guest.attending ? 'Attending' : 'Not Attending'} - Added: ${guest.timestamp}`;
+  
+  // RSVP
   const toggleBtn = document.createElement("button");
-  toggleBtn.textContent = "Toggle RSVP";
+  toggleBtn.textContent = "RSVP";
   toggleBtn.addEventListener("click", () => {
     guest.attending = !guest.attending;
     renderList();
   });
 
-  //edit guest name
+  // edit guest name
   const editBtn = document.createElement("button");
   editBtn.textContent = "Edit";
   editBtn.addEventListener("click", () => {
@@ -29,8 +32,8 @@ function createGuestItem(guest, index) {
       renderList();
     }
   });
-
-  //remove guest
+  
+  // remove guest
   const deleteBtn = document.createElement("button");
   deleteBtn.textContent = "Remove";
   deleteBtn.addEventListener("click", () => {
@@ -42,15 +45,34 @@ function createGuestItem(guest, index) {
   return li;
 }
 
+// Render the entire list
+function renderList() {
+  guestList.innerHTML = ""; // Clear current list
+  guests.forEach((guest, index) => {
+    const guestItem = createGuestItem(guest, index);
+    guestList.appendChild(guestItem);
+  });
+}
 
-
-//handle form submission
+// Handle form submission
 form.addEventListener("submit", function (e) {
-  e.preventDefault(); 
+  e.preventDefault(); // Prevent default form action
 
   if (guests.length >= 10) {
     alert("Guest limit of 10 reached!");
     return;
+  }
+
+  const name = nameInput.value.trim();
+  const category = categorySelect.value;
+
+  if (name === "") return;
+
+  const newGuest = {
+    name,
+    category,
+    attending: true,
+    timestamp: new Date().toLocaleTimeString(),
   };
 
   guests.push(newGuest);
