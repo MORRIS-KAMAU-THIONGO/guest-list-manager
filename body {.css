@@ -1,0 +1,67 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: whitesmoke;
+}
+
+h1 {
+  color: black;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+input, select, button {
+  padding: 8px;
+  font-size: 1rem;
+}
+
+#guest-list {
+  list-style: none;
+  padding: 0;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.guest-item {
+  background-color: white;
+  margin-bottom: 10px;
+  padding: 12px;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Color tags based on category */
+.friend {
+  border-left: 5px solid green;
+}
+
+.family {
+  border-left: 5px solid blue;
+}
+
+.colleague {
+  border-left: 5px solid orange;
+}
+
+button {
+  padding: 5px 10px;
+  border: none;
+  background-color: ghostwhite;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: ghostwhite;
+}
