@@ -4,18 +4,12 @@ const nameInput = document.getElementById("guest-name");
 const categorySelect = document.getElementById("guest-category");
 const guestList = document.getElementById("guest-list");
 
-let guests = []; // Store guest data
+let guests = []; 
 
-// Helper function to create a guest list item
 function createGuestItem(guest, index) {
   const li = document.createElement("li");
 
-  // Assign class for color styling based on category
-  li.className = guest-item ${guest.category.toLowerCase()};
-
-  // Name, category, status, and timestamp
-  const nameSpan = document.createElement("span");
-  nameSpan.textContent = ${guest.name} - ${guest.category} (${guest.attending ? "Attending" : "Not Attending"}) - Added at ${guest.timestamp};
+  li.className = `guest-item ${guest.category.toLowerCase()}`;
 
   // Toggle RSVP
   const toggleBtn = document.createElement("button");
@@ -25,7 +19,7 @@ function createGuestItem(guest, index) {
     renderList();
   });
 
-  // Edit guest name
+  //edit guest name
   const editBtn = document.createElement("button");
   editBtn.textContent = "Edit";
   editBtn.addEventListener("click", () => {
@@ -36,7 +30,7 @@ function createGuestItem(guest, index) {
     }
   });
 
-  // Remove guest
+  //remove guest
   const deleteBtn = document.createElement("button");
   deleteBtn.textContent = "Remove";
   deleteBtn.addEventListener("click", () => {
@@ -48,34 +42,15 @@ function createGuestItem(guest, index) {
   return li;
 }
 
-// Render the entire list
-function renderList() {
-  guestList.innerHTML = ""; // Clear current list
-  guests.forEach((guest, index) => {
-    const guestItem = createGuestItem(guest, index);
-    guestList.appendChild(guestItem);
-  });
-}
 
-// Handle form submission
+
+//handle form submission
 form.addEventListener("submit", function (e) {
-  e.preventDefault(); // Prevent default form action
+  e.preventDefault(); 
 
   if (guests.length >= 10) {
     alert("Guest limit of 10 reached!");
     return;
-  }
-
-  const name = nameInput.value.trim();
-  const category = categorySelect.value;
-
-  if (name === "") return;
-
-  const newGuest = {
-    name,
-    category,
-    attending: true,
-    timestamp: new Date().toLocaleTimeString(),
   };
 
   guests.push(newGuest);
